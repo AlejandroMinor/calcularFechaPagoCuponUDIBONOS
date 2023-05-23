@@ -5,7 +5,7 @@ def calcular_fechas_pago_cupon(fecha_vencimiento):
     fecha_vencimiento = datetime.strptime(fecha_vencimiento, "%d/%m/%Y")
     
     # Definir la fecha de inicio hace 5 años
-    fecha_inicio = fecha_vencimiento - timedelta(days=365*5)
+    fecha_inicio = fecha_vencimiento - timedelta(days=365*10)
     
     # Calcular las fechas de pago de cupón
     fechas_pago = []
@@ -30,3 +30,8 @@ ultimo_pago_cercano = max(fecha for fecha in fechas_pago if fecha <= fecha_refer
 dias_transcurridos = (fecha_referencia - ultimo_pago_cercano).days
 
 print("Días transcurridos desde el último pago de cupón hasta el 1 de enero de 2023:", dias_transcurridos)
+## Calculamos dias transcurridos desde el ultimo pago de cupon hasta el 31 de enero de 2023
+fecha_referencia = datetime(2023, 1, 31)  # Fecha de referencia: 31 de enero de 2023
+ultimo_pago_cercano = max(fecha for fecha in fechas_pago if fecha <= fecha_referencia)
+dias_transcurridos = (fecha_referencia - ultimo_pago_cercano).days
+print("Días transcurridos desde el último pago de cupón hasta el 31 de enero de 2023:", dias_transcurridos)
